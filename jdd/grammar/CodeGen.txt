@@ -1,0 +1,120 @@
+Vanilla Version
+***************
+***************
+The Vanilla version covers a fairly large range of Java instructions but offers least complexity of de-compilation.
+The Vanilla version broadly covers two types of statements:
+a) Assignments - is a large hood in itself
+b) Void Method Invocations
+c) Return statements
+
+Code generation is a two-fold process:
+1. Generate the most obvious code
+2. Optimize the obvious code to make it as compact as possible
+
+Assignments:
+------------
+Assignments are the building blocks a Java program. An assignment involves equating a "variable" (in its primitive sense)
+to an "expression". It is best represented by:
+
+LEFTHANDSIDE ASSIGNMENTOPERATOR ASSIGNMENTEXPRESSION
+
+Decompiling assignments will involve the following steps:
+
+1. Identifying an opportunity which represents an assignment
+   WRARRAY
+   WRFIELD
+   STORE
+2. Starting with '=' as the default assignment operator
+3. Formulating the expression on the RHS.
+4. Re-assign the assignment operator if feasible (+= ,-= etc.)
+
+In the above procedure, the formulation of the expression on the RHS offers maximum complexity.
+The RHS represents a sequence of UIF-combos from a set of infinite combinations:
+ARRCREATE, RDARRAY, ARRLENGTH, OBJCREATE, WRFIELD, ADD, SUB, DIV, MUL, MOD, INC, NEG, SHIFTL, SHIFTR, SHIFTRU, AND, OR,
+XOR, TYPECAST, INVOKE
+
+
+Simple Grammar to be considered while de-compiling:
+
+
+MethodBody :
+	MethodSignature  { StatementList }
+
+StatementList:
+	Statement; StatementList | NULL
+
+Statement:
+	AssignmentStatement | BranchStatement | LoopStatement | SwitchStatement | TryCatchStatement | SyncStatement
+
+AssignmentStatement :
+        (WRFIELD | STORE | WRARRAY)	LHSOperand 	Expression
+
+Expression:
+	ArithmeticExpression | MethodInvocationExpression | BitwiseExpression | TypecastExpression | ReadExpression | OperandExpression | ObjectCreateExpression
+
+
+ArithmeticExpression:
+	ArithmeticOperator Expression Expression
+
+BitwiseExpression:
+	BitwiseOperator	Expression Expression
+
+TypecaseExpression:
+	Type	Expression
+
+ReadFieldExpression:
+	RDARRAY | RDFIELD
+
+MethodInvocationExpression:
+	ExpressionList	INVOKE
+
+ExpressionList:
+	NULL | Expression ExpressionList
+
+
+ObjectCreationExpression:
+    OBJCREATE
+	CONSTRUCT ExpressionList | 
+	ARRCREATE ExpressionList
+	
+
+
+BitwiseOperator:
+	SHIFTL
+	SHIFTR |
+	SHIFTRU |
+	AND	|
+	OR	|
+	XOR
+
+ArithmeticOperator:
+	ADD |
+	SUB	|
+	DIV	|
+	MUL	|
+	NEG	|
+	MOD	|
+	INC
+
+OperandExpression:
+	LocalVariable | Field | ArrayElement | Constant | ClassReference | MethodReference
+
+
+LHSOperand:
+	LocalVariable | Field | ArrayElement	
+	
+
+	
+	
+	
+	
+	
+*Notes*
+Optimization opportunities:
+0. Forming alternate assignments like += -= *= /= %= &= ^= |= <<= >>= >>>=
+1. Forming post-increment & post-decrement expressions
+2. Forming pre-increment & pre-decrement expressions
+3. Forming the ternary operator
+4. Detecting the complement operator
+5. A method returning a type may be invoked without assigning its return value
+   to any operand. Such methods will probably stay back as orphans.
