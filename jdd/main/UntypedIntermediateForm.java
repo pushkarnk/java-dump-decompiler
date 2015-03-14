@@ -4,24 +4,24 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import com.ibm.j9ddr.debugextensions.vm24.jdd.dumpreader.Bytecodes;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.grammar.RandomNameGenerator;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.instructions.JVMInstruction;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.instructions.JVMInstructionBinary;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.instructions.JVMInstructionInvoke;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.instructions.JVMInstructionMulArgsMulRes;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.instructions.JVMInstructionTernary;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.instructions.JVMInstructionUnary;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.instructions.JVMInstructionVarArgs;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.instructions.UIFInstruction;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.operands.BranchDestination;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.operands.ClassRef;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.operands.Constant;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.operands.FieldRef;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.operands.LocalVariable;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.operands.MethodRef;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.operands.Operand;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.operands.StackSlot;
+import jdd.dumpreader.Bytecodes;
+import jdd.grammar.RandomNameGenerator;
+import jdd.instructions.JVMInstruction;
+import jdd.instructions.JVMInstructionBinary;
+import jdd.instructions.JVMInstructionInvoke;
+import jdd.instructions.JVMInstructionMulArgsMulRes;
+import jdd.instructions.JVMInstructionTernary;
+import jdd.instructions.JVMInstructionUnary;
+import jdd.instructions.JVMInstructionVarArgs;
+import jdd.instructions.UIFInstruction;
+import jdd.operands.BranchDestination;
+import jdd.operands.ClassRef;
+import jdd.operands.Constant;
+import jdd.operands.FieldRef;
+import jdd.operands.LocalVariable;
+import jdd.operands.MethodRef;
+import jdd.operands.Operand;
+import jdd.operands.StackSlot;
 
 public class UntypedIntermediateForm {
 
