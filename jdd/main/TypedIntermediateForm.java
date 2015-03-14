@@ -6,25 +6,25 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Vector;
 
-import com.ibm.j9ddr.debugextensions.vm24.jdd.dumpreader.Bytecodes;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.instructions.JVMInstruction;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.instructions.JVMInstructionBinary;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.instructions.JVMInstructionInvoke;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.instructions.JVMInstructionLookupSwitch;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.instructions.JVMInstructionMulArgsMulRes;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.instructions.JVMInstructionNoOp;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.instructions.JVMInstructionTableSwitch;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.instructions.JVMInstructionTernary;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.instructions.JVMInstructionUnary;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.instructions.JVMInstructionVarArgs;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.operands.BranchDestination;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.operands.ClassRef;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.operands.Constant;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.operands.FieldRef;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.operands.LocalVariable;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.operands.MethodRef;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.operands.Operand;
-import com.ibm.j9ddr.debugextensions.vm24.jdd.operands.StackSlot;
+import jdd.dumpreader.Bytecodes;
+import jdd.instructions.JVMInstruction;
+import jdd.instructions.JVMInstructionBinary;
+import jdd.instructions.JVMInstructionInvoke;
+import jdd.instructions.JVMInstructionLookupSwitch;
+import jdd.instructions.JVMInstructionMulArgsMulRes;
+import jdd.instructions.JVMInstructionNoOp;
+import jdd.instructions.JVMInstructionTableSwitch;
+import jdd.instructions.JVMInstructionTernary;
+import jdd.instructions.JVMInstructionUnary;
+import jdd.instructions.JVMInstructionVarArgs;
+import jdd.operands.BranchDestination;
+import jdd.operands.ClassRef;
+import jdd.operands.Constant;
+import jdd.operands.FieldRef;
+import jdd.operands.LocalVariable;
+import jdd.operands.MethodRef;
+import jdd.operands.Operand;
+import jdd.operands.StackSlot;
 import com.ibm.j9ddr.vm24.types.U32;
 
 public class TypedIntermediateForm implements MethodDataCollector {
@@ -33,13 +33,13 @@ public class TypedIntermediateForm implements MethodDataCollector {
 	
 	static final int NO_OPERATOR 		   = 0; //should have been NO_OPERAND, correction coming up in v2
 	static final int VALUE       		   = 1;
-	static final int CP_INDEX              = 2;
-	static final int LV_INDEX              = 3;
-	static final int LV_INDEX_AND_CONSTANT = 4;
+	static final int CP_INDEX                  = 2;
+	static final int LV_INDEX              	   = 3;
+	static final int LV_INDEX_AND_CONSTANT     = 4;
 	static final int BRANCH_OFFSET		   = 5;
-	static final int INVOKE_INTERFACE      = 6;
-	static final int ARRAY_TYPE            = 7;
-	static final int MULTINEWARRAY	       = 8;
+	static final int INVOKE_INTERFACE          = 6;
+	static final int ARRAY_TYPE                = 7;
+	static final int MULTINEWARRAY	           = 8;
 	static final int WIDE		           = 9;
 	static final Operand MEMORY_FIELD = null; //side effect
 	static final Operand NO_RESULT_OP = null;
