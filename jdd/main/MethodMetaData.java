@@ -2,7 +2,6 @@ package jdd.main;
 
 import java.util.LinkedList;
 
-import com.ibm.j9ddr.vm24.types.U32;
 
 public class MethodMetaData {
 	private String name;
@@ -13,7 +12,7 @@ public class MethodMetaData {
 	private int tempCount;
 	private LinkedList<CaughtExceptionData> caughtExceptions;
 	private LinkedList<String> thrownExceptions;
-	U32 modifiers;
+	int modifiers;
 	
 	public MethodMetaData () 
 	{
@@ -22,7 +21,7 @@ public class MethodMetaData {
 	}
 	
 	
-	public U32 getModifiers ( )
+	public int getModifiers ( )
 	{
 		return modifiers;
 	}
