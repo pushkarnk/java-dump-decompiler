@@ -2,10 +2,7 @@ package jdd.main;
 
 import java.io.PrintStream;
 
-import com.ibm.j9ddr.debugextensions.vm24.jdd.dumpreader.DumpReader;
-import com.ibm.j9ddr.tools.ddrinteractive.Context;
-import com.ibm.j9ddr.tools.ddrinteractive.DDRInteractiveCommandException;
-
+import jdd.dumpreader.DumpReader;
 
 public final class Decompiler {
 	
@@ -22,7 +19,7 @@ public final class Decompiler {
 		return singletonInstance;
 	}
 
-	public void decompile  ( long methodDataAddr, Context context, PrintStream out ) throws DDRInteractiveCommandException
+	public void decompile  ( long methodDataAddr, Object context, PrintStream out ) throws Exception
 	{
 		//Create an empty Typed Intermediate Form (TIF)object
 		//Send it across to the DumpReader, which will populate it all the required info and send it back
